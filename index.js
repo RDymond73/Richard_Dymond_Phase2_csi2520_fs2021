@@ -9,15 +9,32 @@ require("./auth");
 
 function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
+  
 }
 
-app.use(session({ secret: "Mich" })); 
+app.use(session({
+secret: "Mich", 
+SameSite: 'none',
+secure: true
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true })); 
+app.use(express.urlencoded({ 
+  extended: true, 
+  SameSite: 'none'
+}));
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use(session({
+  // Removed
+    cookie: {
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+    SameSite: 'none', 
+    secure: true
+  }
+}));
 
 
 app.get("/", (req, res) => {
@@ -27,7 +44,9 @@ app.get("/", (req, res) => {
  
 app.get(
     "/auth/google",
-    passport.authenticate("google", { scope: ["email", "profile"] })
+    passport.authenticate("google", { 
+      scope: ["email", "profile"], 
+      SameSite: 'none'})
   );
 
 app.get(
@@ -35,11 +54,17 @@ app.get(
   passport.authenticate("google", {
     successRedirect: "/protected",
     failureRedirect: "auth/failure",
+    SameSite: 'none', 
+    secure: true
   })
 );
 
 app.get("/protected", isLoggedIn, (req, res) => {
-  res.send(`Hello.... ${req.user.displayName}`);
+  res.send(`Hello.... ${req.user.displayName
+  }`
+  );
+  
+
 });
 
 app.get("/auth/failure", (req, res) => {

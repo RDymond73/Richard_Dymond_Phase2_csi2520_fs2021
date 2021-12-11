@@ -32,16 +32,28 @@ section {
 	margin-bottom: 0; 
 	color: #090b80;
 }
+input {
+	width: 25%;
+}
 
 img {
     display: inline;
     margin-right: auto;
-    width: 40%;
+    width: 30%;
     border-radius: 8px;
+	padding-top: 2%;
   }
 
+div {
+	text-align: center;
+	font: italic normal 1.2em georgia, sans-serif;
+	letter-spacing: 1px; 
+	margin-bottom: 0; 
+	color: #090b80;
+}
+
 map {
-      display: inline;
+      display: block;
       margin-left: auto;
       width: 25%;
   }
