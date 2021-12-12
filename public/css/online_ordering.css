@@ -17,6 +17,10 @@ h3 {
 	color: #090b80;
 	}
 
+#hidden {
+	visibility: hidden;
+}
+
 nav {
     text-align: center;
     font: italic normal .8em georgia, sans-serif;

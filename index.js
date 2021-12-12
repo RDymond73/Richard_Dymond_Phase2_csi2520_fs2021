@@ -28,7 +28,6 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(session({
-  // Removed
     cookie: {
     maxAge: 7 * 24 * 60 * 60 * 1000,
     SameSite: 'none', 
@@ -76,6 +75,7 @@ app.get("/logout", (req, res) => {
   req.session.destroy();
   res.send("You have been successfully logged out");
 });
+
 
 const PORT = process.env.PORT || 3000;
 
