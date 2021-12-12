@@ -4,6 +4,8 @@ const ejs = require("ejs");
 const session = require("express-session");
 const express = require('express');
 const passport = require("passport");
+const { userInfo } = require("os");
+const { response } = require("express");
 const app = express();
 require("./auth");
 
@@ -17,6 +19,7 @@ secret: "Mich",
 SameSite: 'none',
 secure: true
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.json());
@@ -24,8 +27,10 @@ app.use(express.urlencoded({
   extended: true, 
   SameSite: 'none'
 }));
+
 app.set("view engine", "ejs");
-app.use(express.static(path.join(__dirname, "public")));
+
+app.use(express.static(path.join(__dirname, "views")));
 
 app.use(session({
     cookie: {
@@ -37,10 +42,9 @@ app.use(session({
 
 
 app.get("/", (req, res) => {
-    res.send('index');
+    res.render('home');
   });
 
- 
 app.get(
     "/auth/google",
     passport.authenticate("google", { 
@@ -58,24 +62,23 @@ app.get(
   })
 );
 
-app.get("/protected", isLoggedIn, (req, res) => {
-  res.send(`Hello.... ${req.user.displayName
-  }`
-  );
-  
+app.get("/")
 
+app.get("/home", isLoggedIn, (req, res) => {
+  res.render('home');
+  //res.send(`Hello! ${req.user.displayName
+  //}`
+  //);
 });
 
-app.get("/auth/failure", (req, res) => {
-  res.send("You were not authenticated");
+
+ app.get("/food_descriptions", (req, res) => {
+    res.render('food_descriptions');
 });
 
-app.get("/logout", (req, res) => {
-  req.logout();
-  req.session.destroy();
-  res.send("You have been successfully logged out");
+app.get("/online_oredering", (req, res) => {
+  res.render('food_descriptions')
 });
-
 
 const PORT = process.env.PORT || 3000;
 

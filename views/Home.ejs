@@ -1,36 +1,37 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <link rel="shortcut icon" href="../img/burger.png" type="image/x-icon">
-    <link rel="stylesheet" href="/public/css/Index.css">
+    <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/home.css">
 </head>
-
+ 
 <body>
-
+    
     <header>
         <h1>BitFood</h1>
         <h3>The Best Food in the World!</h3>
     </header>
 
-    <div>
-        
-    </div>
-
     <nav>
-        <span><a href="./Home.html">Home Page</a></span>
-        <span><a href="../index.html">Login/SignUp</a></span>
+        <span><a href="./home.html">Home Page</a></span>
         <span><a href="../html/food_descriptions.html">Food Descriptions</a></span>
         <span><a href="../html/online_ordering.html">Online Ordering</a></span>
     </nav>
 
     <main>
+
+        <p id="user"><%= process.env.GOOGLE_CLIENT_ID %></p>
+
         <section>
+
             <h3>BitFood Menu</h3>
+
             <table>
+
                 <tr>
                     <th>Order #</th>
                     <th>Item</th>
@@ -54,14 +55,17 @@
                     <td>BitShake</td>
                     <td>$1.00</td>
                 </tr>
+
             </table>
+
         </section>
 
         <img src="../img/logo.png" alt="logoPic" width=25%>
+
     </main>
 
-
     <hr>
+    
     <footer>
         <p>Rick Dymond, Email: Rdymond@oakland.edu</p>
     </footer>

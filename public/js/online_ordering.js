@@ -20,7 +20,7 @@ function order(ev) {
 }
 
 function showHidden(ev) {
-    var node = document.getElementById('hidden');
+    let node = document.getElementById('hidden');
     if (node.style.visibility=='hidden') {
         node.style.visibility = 'visible';
     }
