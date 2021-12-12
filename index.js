@@ -42,7 +42,7 @@ app.use(session({
 
 
 app.get("/", (req, res) => {
-    res.render('home');
+    res.render('index');
   });
 
 app.get(
