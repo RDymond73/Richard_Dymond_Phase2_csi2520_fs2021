@@ -10,10 +10,11 @@ passport.use(
 {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "https://warm-spire-86493.herokuapp.com/",
+      callbackURL: "http://localhost:3000/html/home.html",
       passReqToCallback: true,
       SameSite: 'none',
-      secure: true
+      secure: true,
+      proxy: true
     },
     function (request, accessToken, refreshToken, profile, done) {
       return done(null, profile);
