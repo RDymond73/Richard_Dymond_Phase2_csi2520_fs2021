@@ -28,9 +28,9 @@ app.use(express.urlencoded({
   SameSite: 'none'
 }));
 
-app.set("view engine", "ejs");
+//app.set("view engine", "ejs");
 
-app.use(express.static(path.join(__dirname, "views")));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use(session({
     cookie: {
@@ -62,23 +62,22 @@ app.get(
   })
 );
 
-app.get("/")
 
-app.get("/home", isLoggedIn, (req, res) => {
-  res.render('home');
-  //res.send(`Hello! ${req.user.displayName
-  //}`
-  //);
-});
+// app.get("/home", isLoggedIn, (req, res) => {
+//   res.render('home');
+//   //res.send(`Hello! ${req.user.displayName
+//   //}`
+//   //);
+// });
 
 
- app.get("/food_descriptions", (req, res) => {
-    res.render('food_descriptions');
-});
+//  app.get("/food_descriptions", (req, res) => {
+//     res.render('food_descriptions');
+// });
 
-app.get("/online_oredering", (req, res) => {
-  res.render('food_descriptions')
-});
+// app.get("/online_oredering", (req, res) => {
+//   res.render('food_descriptions')
+// });
 
 const PORT = process.env.PORT || 3000;
 
